@@ -31,12 +31,12 @@ class Reservation
         return $this->id;
     }
 
-    public function getIdVehiculeReserver(): ?Vehicules
+    public function getVehiculeReserver(): ?Vehicules
     {
         return $this->vehicule_reserver;
     }
 
-    public function setIdVehiculeReserver(?Vehicules $vehicule_reserver): static
+    public function setVehiculeReserver(?Vehicules $vehicule_reserver): static
     {
         $this->vehicule_reserver = $vehicule_reserver;
 

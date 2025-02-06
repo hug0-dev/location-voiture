@@ -28,17 +28,17 @@ class Vehicules
     #[ORM\Column(nullable: true)]
     private ?int $statut_disponibilite = null;
 
-    /**
-     * @var Collection<int, Reservation>
-     */
-    #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'id_vehicule_reserver')]
-    private Collection $reservations;
-
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaire = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $note = null;
+
+    /**
+     * @var Collection<int, Reservation>
+     */
+    #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'vehicule_reserver')]
+    private Collection $reservations;
 
     public function __construct()
     {
