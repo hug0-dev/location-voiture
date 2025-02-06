@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\VehiculesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VehiculesRepository::class)]
@@ -32,6 +33,12 @@ class Vehicules
      */
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'id_vehicule_reserver')]
     private Collection $reservations;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $commentaire = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $note = null;
 
     public function __construct()
     {
@@ -117,6 +124,30 @@ class Vehicules
                 $reservation->setIdVehiculeReserver(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?string
+    {
+        return $this->commentaire;
+    }
+
+    public function setCommentaire(?string $commentaire): static
+    {
+        $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    public function getNote(): ?int
+    {
+        return $this->note;
+    }
+
+    public function setNote(?int $note): static
+    {
+        $this->note = $note;
 
         return $this;
     }
