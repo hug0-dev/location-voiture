@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicules index{% endblock %}
+
+{% block body %}
+    <h1>Liste véhicules</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Immatriculation</th>
+                <th>Prix journalier €</th>
+                <th>Disponibilite</th>
+                <th>Commentaire</th>
+                <th>Note</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vehicule in vehicules %}
+            <tr>
+                <td>{{ vehicule.marque }}</td>
+                <td>{{ vehicule.immatriculation }}</td>
+                <td>{{ vehicule.prixJournalier }}</td>
+                {% if vehicule.statutDisponibilite %}
+                    <td>Disponible</td>
+                {% else %}
+                    <td>Indisponible</td>
+                {% endif %}
+                <td>{{ vehicule.commentaire }}</td>
+                <td>{{ vehicule.note }}</td>
+                <td>
+                    <a href="{{ path('app_vehicules_show', {'id': vehicule.id}) }}">Afficher</a>
+                    <a href="{{ path('app_vehicules_edit', {'id': vehicule.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun véhicule</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vehicules_new') }}">Ajouter véhicule</a>
+{% endblock %}
