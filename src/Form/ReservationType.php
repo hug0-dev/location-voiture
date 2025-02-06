@@ -23,7 +23,7 @@ class ReservationType extends AbstractType
             ->add('prix_total')
             ->add('vehicule_reserver', EntityType::class, [
                 'class' => Vehicules::class,
-'choice_label' => 'id',
+                'choice_label' => 'marque',
             ])
         ;
     }
