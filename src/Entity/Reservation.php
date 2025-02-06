@@ -15,7 +15,7 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-    private ?Vehicules $id_vehicule_reserver = null;
+    private ?Vehicules $vehicule_reserver = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_debut = null;
@@ -33,12 +33,12 @@ class Reservation
 
     public function getIdVehiculeReserver(): ?Vehicules
     {
-        return $this->id_vehicule_reserver;
+        return $this->vehicule_reserver;
     }
 
-    public function setIdVehiculeReserver(?Vehicules $id_vehicule_reserver): static
+    public function setIdVehiculeReserver(?Vehicules $vehicule_reserver): static
     {
-        $this->id_vehicule_reserver = $id_vehicule_reserver;
+        $this->vehicule_reserver = $vehicule_reserver;
 
         return $this;
     }
