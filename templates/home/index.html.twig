@@ -1,14 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Liste des véhicules{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Liste des véhicules</h1>
 
-<div class="example-wrapper">
-    <h1>Hello</h1>
-</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Année</th>
+                <th>Réservation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehicule in vehicules %}
+                <tr>
+                    <td>{{ vehicule.marque }}</td>
+                    <td>{{ vehicule.immatriculation }}</td>
+                {% if vehicule.statutDisponibilite %}
+                    <td>Disponible</td>
+                {% else %}
+                    <td>Indisponible</td>
+                {% endif %}
+                {% if app.user %}
+                    <td><a href="{{ path('app_reservation_new')}}">Réserver</a></td>
+                {% else %}
+                    <td><a href="{{ path('app_login') }}">Réserver</a></td>
+                {% endif %}
+
+                </tr>
+
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucun véhicule trouvé</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Reservation;
+use App\Entity\User;
 use App\Entity\Vehicules;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -23,7 +24,12 @@ class ReservationType extends AbstractType
             ->add('prix_total')
             ->add('vehicule_reserver', EntityType::class, [
                 'class' => Vehicules::class,
-                'choice_label' => 'marque',
+'choice_label' => 'marque',
+            ])
+            ->add('users', EntityType::class, [
+                'class' => User::class,
+'choice_label' => 'email',
+'multiple' => true,
             ])
         ;
     }
