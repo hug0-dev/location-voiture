@@ -18,7 +18,7 @@
             <a class="btn btn-success" href="{{path('app_home')}}">Home</a>
             {% if is_granted("ROLE_ADMIN") %} |
             <a class="btn btn-success" href="{{path('app_vehicules_index')}}">Véhicule</a>
-            <a class="btn btn-success" href="{{path('app_vehicules_index')}}">Uttilisateur</a>
+            <a class="btn btn-success" href="{{path('app_user_index')}}">Uttilisateur</a>
             {% endif %}
             <a class="btn btn-success" href="{{path('app_reservation_index')}}">Réservation</a>
             <a class="btn btn-danger" href="{{path('app_logout')}}">Logout</a>
