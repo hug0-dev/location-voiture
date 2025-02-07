@@ -9,8 +9,9 @@
         <thead>
             <tr>
                 <th>Marque</th>
-                <th>Modèle</th>
+                <th>Immatriculation</th>
                 <th>Année</th>
+                <th>Détails</th>
                 <th>Réservation</th>
             </tr>
         </thead>
@@ -26,8 +27,10 @@
                 {% endif %}
                 {% if app.user %}
                     <td><a href="{{ path('app_reservation_new')}}">Réserver</a></td>
+                    <td><a href="{{ path('app_vehicules_show', {'id': vehicule.id}) }}">Détails</a></td>
                 {% else %}
                     <td><a href="{{ path('app_login') }}">Réserver</a></td>
+                    <td><a href="{{ path('app_vehicules_show', {'id': vehicule.id}) }}">Détails</a></td>
                 {% endif %}
 
                 </tr>
